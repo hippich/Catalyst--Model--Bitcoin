@@ -3,7 +3,7 @@ package Catalyst::Helper::Model::Bitcoin;
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 sub mk_compclass {
@@ -18,7 +18,7 @@ sub mk_compclass {
 
 =head1 NAME
 
-Catalyst::Helper::Model::Bitcoin - Perl extension for blah blah blah
+Catalyst::Helper::Model::Bitcoin - Helper class for Bitcoin models 
 
 =head1 SYNOPSIS
 
@@ -26,32 +26,17 @@ Catalyst::Helper::Model::Bitcoin - Perl extension for blah blah blah
 
 =head1 DESCRIPTION
 
-Stub documentation for Catalyst::Helper::Model::Bitcoin, created by h2xs. It looks like the
-author of the extension was negligent enough to leave the stub
-unedited.
-
-Blah blah blah.
-
-=head2 EXPORT
-
-None by default.
-
-
+A Helper for creating models to interface with Bitcoin Server
 
 =head1 SEE ALSO
 
-Mention other useful documentation such as the documentation of
-related modules or operating system documentation (such as man pages
-in UNIX), or any relevant external documentation such as RFCs or
-standards.
-
-If you have a mailing list set up for your module, mention it here.
-
-If you have a web site set up for your module, mention it here.
+L<https://github.com/hippich/Catalyst--Model--Bitcoin>, L<https://www.bitcoin.org>, L<Finance::Bitcoin>, L<Catalyst>
 
 =head1 AUTHOR
 
-Pavel Karoukin, E<lt>pavel@yepcorp.comE<gt>
+Pavel Karoukin
+E<lt>pavel@yepcorp.comE<gt>
+http://www.yepcorp.com
 
 =head1 COPYRIGHT AND LICENSE
 

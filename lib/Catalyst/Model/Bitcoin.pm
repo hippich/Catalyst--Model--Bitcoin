@@ -9,7 +9,7 @@ use Carp qw( croak );
 
 extends 'Catalyst::Model';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 has jsonrpc_uri => (is => 'rw');
 has api => (is => 'rw');
@@ -78,45 +78,53 @@ sub get_balance {
 
 1;
 __END__
-# Below is stub documentation for your module. You'd better edit it!
 
 =head1 NAME
 
-Catalyst::Model::Bitcoin - Perl extension for blah blah blah
+Catalyst::Model::Bitcoin - Catalyst model class that interfaces 
+with Bitcoin Server via JSON RPC
 
 =head1 SYNOPSIS
 
-  use Catalyst::Model::Bitcoin;
-  blah blah blah
+Use the helper to add a Bitcoin model to your application:
+
+   ./script/myapp_create.pl model BitcoinServer Bitcoin
+
+After new model created, edit config:
+
+   # ./lib/MyApp/Model/BitcoinServer.pm
+   __PACKAGE__->config(
+     uri => 'http://rpcuser:rpcpassword@localhost:8332',
+   );
+
+In controller:
+
+   # Get address object (see Finance::Bitcoin::Address)
+   my $address = $c->model('BitcoinServer')->find($address_string);
+
+   # Send coins to address.
+   $c->model('BitcoinServer')->send_to_address($address_string, $amount);
+
+   # Generate new address to receive coins.
+   my $new_address_string = $c->model('BitcoinServer')->get_new_address();
+
+   # Get current wallet balance.
+   my $balance = $c->model('BitcoinServer')->get_balance();
 
 =head1 DESCRIPTION
 
-Stub documentation for Catalyst::Model::Bitcoin, created by h2xs. It looks like the
-author of the extension was negligent enough to leave the stub
-unedited.
-
-Blah blah blah.
-
-=head2 EXPORT
-
-None by default.
-
-
+This model class uses L<Finance::Bitcoin> to access Bitcoin Server
+via JSON RPC.
 
 =head1 SEE ALSO
 
-Mention other useful documentation such as the documentation of
-related modules or operating system documentation (such as man pages
-in UNIX), or any relevant external documentation such as RFCs or
-standards.
-
-If you have a mailing list set up for your module, mention it here.
-
-If you have a web site set up for your module, mention it here.
+L<https://github.com/hippich/Catalyst--Model--Bitcoin>, L<https://www.bitcoin.org>, L<Finance::Bitcoin>, L<Catalyst>
 
 =head1 AUTHOR
 
-Pavel Karoukin, E<lt>pavel@yepcorp.comE<gt>
+Pavel Karoukin 
+E<lt>pavel@yepcorp.comE<gt>
+http://www.yepcorp.com
 
 =head1 COPYRIGHT AND LICENSE
 

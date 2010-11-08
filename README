@@ -1,16 +1,35 @@
-Catalyst-Helper-Model-Bitcoin version 0.01
+Catalyst-Helper-Model-Bitcoin version 0.02
 ==========================================
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+This us a Catalyst model class that interfaces with Bitcoin Server
+via JSON RPC. Visit Bitcoin website at http://www.bitcoin.org
 
-A README file is required for CPAN modules since CPAN extracts the
-README file from a module distribution so that people browsing the
-archive can use it get an idea of the modules uses. It is usually a
-good idea to provide version information here so that people can
-decide whether fixes for the module are worth downloading.
+SYNOPSIS
+
+Use the helper to add a Bitcoin model to your application:
+
+   ./script/myapp_create.pl model BitcoinServer Bitcoin
+
+After new model created, edit config:
+
+   # ./lib/MyApp/Model/BitcoinServer.pm
+   __PACKAGE__->config(
+     uri => 'http://rpcuser:rpcpassword@localhost:8332',
+   );
+
+In controller:
+
+   # Get address object (see Finance::Bitcoin::Address)
+   my $address = $c->model('BitcoinServer')->find($address_string);
+
+   # Send coins to address.
+   $c->model('BitcoinServer')->send_to_address($address_string, $amount);
+
+   # Generate new address to receive coins.
+   my $new_address_string = $c->model('BitcoinServer')->get_new_address();
+
+   # Get current wallet balance.
+   my $balance = $c->model('BitcoinServer')->get_balance();
 
 INSTALLATION
 
@@ -25,11 +44,12 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  blah blah blah
+  http://www.bitcoin.org
+  https://github.com/hippich/Catalyst--Model--Bitcoin
+  Catalyst
+  Finance::Bitcoin
 
 COPYRIGHT AND LICENCE
-
-Put the correct copyright and licence information here.
 
 Copyright (C) 2010 by Pavel Karoukin
 
