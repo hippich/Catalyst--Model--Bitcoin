@@ -1,7 +1,7 @@
 Catalyst-Helper-Model-Bitcoin version 0.02
 ==========================================
 
-This us a Catalyst model class that interfaces with Bitcoin Server
+This is a Catalyst model class that interfaces with Bitcoin Server
 via JSON RPC. Visit Bitcoin website at http://www.bitcoin.org
 
 SYNOPSIS
